@@ -23,14 +23,11 @@ class _OrderDetailsState extends State<OrderDetails> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    showModalBottomSheet(isScrollControlled: true,
+                    showModalBottomSheet(isScrollControlled: true,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20))),
                         context: context, builder: (BuildContext context){
                       return Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(topRight: Radius.circular(Dimensions.radiusLarge), topLeft: Radius.circular(Dimensions.radiusLarge)),
 
-                        ),
-                         height: 500,
+                         height: 650,
                         child: ItemDetails(),
 
                       );

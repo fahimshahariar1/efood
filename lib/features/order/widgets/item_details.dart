@@ -12,30 +12,33 @@ class ItemDetails extends StatefulWidget {
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
+
+  int selectedOption = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
           Stack(
-            children: [ClipRRect(borderRadius: BorderRadius.only(topRight: Radius.circular(Dimensions.radiusLarge), topLeft: Radius.circular(Dimensions.radiusLarge)),
+            children: [ClipRRect(borderRadius: BorderRadius.only(topRight: Radius.circular(Dimensions.radiusExtraLarge), topLeft: Radius.circular(Dimensions.radiusExtraLarge)),
                 child: Image.asset(Images.naga)),
             Positioned(left: 360, top: 20,
                 child: Image.asset(Images.fav))
             ]
           ),
 
-          SizedBox(height:  60,),
+          const SizedBox(height:  60,),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeMediumLarge),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(getTranslated("description", context)!, style: poppinsRegular.copyWith(fontWeight: FontWeight.w700,),),
+                Text(getTranslated("description", context)!, style: poppinsRegular.copyWith(fontWeight: FontWeight.w700,fontSize: Dimensions.fontSizeDefault),),
+
                 Row(
                   children: [
-                    Container(decoration: BoxDecoration(color: Theme.of(context).dialogBackgroundColor, borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault)),
+                    Container(decoration: BoxDecoration(color: Theme.of(context).dialogBackgroundColor.withOpacity(0.2), borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault)),
                       child: Row(
                         children: [
                           Padding(
@@ -45,7 +48,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                           //SizedBox(width: Dimensions.paddingSizeSmall,),
                           Padding(
                             padding: const EdgeInsets.all(8),
-                            child: Text(getTranslated("non_veg", context)!,style: poppinsRegular),
+                            child: Text(getTranslated("non_veg", context)!,style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
                           ),
                         ],
                       ),
@@ -56,8 +59,94 @@ class _ItemDetailsState extends State<ItemDetails> {
               ],
             ),
           ),
-          SizedBox(height: Dimensions.paddingSizeLarge,),
-          Text(getTranslated("details_description", context)!),
+          const SizedBox(height: Dimensions.paddingSizeDefault,),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Text(getTranslated("details_description", context)!,style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),),
+          ),
+
+          const SizedBox(height: Dimensions.paddingSizeExtraLarge,),
+          Card(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
+                        child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(getTranslated("size", context)!,style: poppinsRegular,),
+                            Text(getTranslated("select_one", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 180,),
+                      Container(height: 30, width: 80,
+                        decoration: BoxDecoration(color: Theme.of(context).dialogBackgroundColor.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall)),
+                        child: Center(child: Text(getTranslated("required", context)!,
+                          style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),)),
+                      )
+
+                    ],
+                  ),
+                ),
+
+
+                Column(
+                  children: [
+
+                    ListTile(
+                      title: Text(getTranslated("small", context)!, style: poppinsRegular,),
+                      leading: Radio(activeColor: Theme.of(context).hintColor,
+                          value: 1, groupValue: selectedOption, onChanged: (value){
+                        setState(() {
+
+                        });
+                      }),
+                      trailing: Text(getTranslated("small_price", context)!),
+                    ),
+                    ListTile(
+                      title: Text(getTranslated("medium", context)!, style: poppinsRegular,),
+                      leading: Radio(activeColor: Theme.of(context).hintColor,
+                          value: 2, groupValue: selectedOption, onChanged: (value){
+                        setState(() {
+
+                        });
+                      }),
+                      trailing: Text(getTranslated("small_price", context)!),
+                    ),
+                    ListTile(
+                      title: Text(getTranslated("large", context)!, style: poppinsRegular,),
+                      leading: Radio(activeColor: Theme.of(context).hintColor,
+                          value: 3, groupValue: selectedOption, onChanged: (value){
+                        setState(() {
+
+                        });
+                      }),
+                      trailing: Text(getTranslated("small_price", context)!),
+                    ),
+
+
+                  ],
+                )
+
+
+              ],
+            ),
+          ),
+
+          Card(
+            child: Column(
+              children: [
+                Text(getTranslated("salad", context)!),
+                Text(getTranslated("selected", context)!),
+              ],
+            ),
+          )
 
 
           ],
@@ -65,7 +154,7 @@ class _ItemDetailsState extends State<ItemDetails> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       floatingActionButton: Center(child: Padding(
-    padding: const EdgeInsets.only(bottom: 70),
+    padding: const EdgeInsets.only(bottom: 200),
     child: Material( elevation: 1, borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge),
       child: Container(height: 75, width: 350,
       decoration: BoxDecoration(color: Colors.white,

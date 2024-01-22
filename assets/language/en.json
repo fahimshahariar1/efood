@@ -554,6 +554,13 @@
   "rate" : "4.5",
   "pricing" : "$575",
   "discount_price" : "$100",
-  "details_description" : "Ramen noodles, half boiled egg, deep fried onion rings, salted beet root slices, spinach, special curry, naga spice."
-
+  "details_description" : "Ramen noodles, half boiled egg, deep fried onion rings, salted beet root slices, spinach, special curry, naga spice.",
+  "size" : "Size",
+  "select_one" : "Select One",
+  "small" : "Small",
+  "medium" : "Medium",
+  "large" : "Large",
+  "small_price" : "$46",
+  "salad" : "Salad",
+  "selected" : "Select Minimum 2 & Up to 4"
 }

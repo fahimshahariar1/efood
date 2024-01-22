@@ -13,7 +13,7 @@ ThemeData light = ThemeData(
   disabledColor: const Color(0xFFBABFC4),
   shadowColor: Colors.grey[300],
   highlightColor: Color(0xffFF8200),
-  dialogBackgroundColor: Color(0xffFFF5F3),
+  dialogBackgroundColor: const Color(0xffFF7E81),
   pageTransitionsTheme: const PageTransitionsTheme(builders: {
     TargetPlatform.android: ZoomPageTransitionsBuilder(),
     TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
