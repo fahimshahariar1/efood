@@ -39,14 +39,14 @@ class _ItemDetailsState extends State<ItemDetails> {
                                 children: [ClipRRect(borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusExtraLarge),
                                     topLeft: Radius.circular(Dimensions.radiusExtraLarge)),
                                     child: Image.asset(Images.naga)),
-                                  Positioned(left: 360, top: 20,
+                                  Positioned(left: 360, top: Dimensions.paddingSizeLarge,
                                       child: Image.asset(Images.fav))
                                 ]
                             ),
           
           
                             Container(transform: Matrix4.translationValues(0, -50, 0),
-                              height: 75, width: 350,
+                              height: Dimensions.containerSizeMedium, width: Dimensions.containerSizeOverLarge,
                               decoration: BoxDecoration(color: Colors.white,
                                   borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge)
                               ),
@@ -54,7 +54,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(top: Dimensions.paddingSizeLarge, left: Dimensions.paddingSizeLarge),
+                                    padding: const EdgeInsets.only(top: Dimensions.paddingSizeDefault, left: Dimensions.paddingSizeLarge),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -98,12 +98,12 @@ class _ItemDetailsState extends State<ItemDetails> {
                                         child: Row(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.all(8),
+                                              padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
                                               child: Image.asset(Images.nonveg, height: Dimensions.paddingSizeExtraLarge,),
                                             ),
-                                            //SizedBox(width: Dimensions.paddingSizeSmall,),
+
                                             Padding(
-                                              padding: const EdgeInsets.all(8),
+                                              padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                                               child: Text(getTranslated("non_veg", context)!,style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
                                             ),
                                           ],
@@ -117,7 +117,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                             ),
                             const SizedBox(height: Dimensions.paddingSizeDefault,),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
                               child: Text(getTranslated("details_description", context)!,style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),),
                             ),
           
@@ -128,21 +128,27 @@ class _ItemDetailsState extends State<ItemDetails> {
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 10),
+                                      padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                                       child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(getTranslated("size", context)!,style: poppinsRegular,),
-                                                Text(getTranslated("select_one", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
-                                              ],
-                                            ),
+                                          Row(
+
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(getTranslated("size", context)!,style: poppinsRegular,),
+                                                    Text(getTranslated("select_one", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(width: 180,),
-                                          Container(height: 30, width: 70,
+                                          //const SizedBox(width: 180,),
+                                          Container(height: Dimensions.containerSizeSmall, width: Dimensions.containerSizeMedium,
                                             decoration: BoxDecoration(color: Theme.of(context).dialogBackgroundColor.withOpacity(0.2),
                                                 borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall)),
                                             child: Center(child: Text(getTranslated("required", context)!,
@@ -212,7 +218,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(getTranslated("salad", context)!, style: poppinsRegular,),
-                                            Text(getTranslated("selected", context)!, style: poppinsRegular.copyWith(fontSize: 12),),
+                                            Text(getTranslated("selected", context)!, style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeDefault),),
                                           ],
                                         ),
                                       ),
@@ -329,7 +335,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                             ), //selecting part
           
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                               child: Card(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -361,8 +367,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                                                 children: [
                                                   Text(getTranslated('small_price', context)!),
                                                   const SizedBox(width: Dimensions.paddingSizeSmall,),
-                                                  Container(height: 22, width: 70, decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
+                                                  Container(height: Dimensions.containerSizeSmallest, width: Dimensions.containerSizeMedium,
+                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
                                                     color: Theme.of(context).dialogBackgroundColor.withOpacity(0.2),
                                                   ),
                                                     child: Padding(
@@ -371,13 +377,13 @@ class _ItemDetailsState extends State<ItemDetails> {
                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
                                                           Padding(
-                                                            padding: const EdgeInsets.only(left: 5),
-                                                            child: Icon(CupertinoIcons.trash, size: 15, color: Theme.of(context).dialogBackgroundColor,),
+                                                            padding: const EdgeInsets.only(left: Dimensions.paddingSizeExtraSmall),
+                                                            child: Icon(CupertinoIcons.trash, size: Dimensions.paddingSizeDefault, color: Theme.of(context).dialogBackgroundColor,),
                                                           ),
                                                           Text("1", style: poppinsRegular,),
                                                           Padding(
-                                                            padding: const EdgeInsets.only(right: 5),
-                                                            child: Icon(Icons.add, size: 15, color: Theme.of(context).dialogBackgroundColor,),
+                                                            padding: const EdgeInsets.only(right: Dimensions.paddingSizeExtraSmall),
+                                                            child: Icon(Icons.add, size: Dimensions.paddingSizeDefault, color: Theme.of(context).dialogBackgroundColor,),
                                                           ),
                                                         ],
                                                       ),
@@ -484,8 +490,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                             height: 28, width: 28, decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).dialogBackgroundColor.withOpacity(0.2)),
                             child: Icon(Icons.remove_rounded, color: Theme.of(context).hintColor,size: 15,),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20),
                             child: Text("1",style: rubikMedium,),
                           ),
                           Padding(

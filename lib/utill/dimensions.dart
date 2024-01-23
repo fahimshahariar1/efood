@@ -26,7 +26,11 @@ class Dimensions {
 
 
   static const double containerSizeLarge = 100.0;
+  static const double containerSizeSmallest = 22.0;
+  static const double containerSizeSmall = 30.0;
+  static const double containerSizeMedium = 70.0;
   static const double containerSizeExtraLarge = 200.0;
+  static const double containerSizeOverLarge = 350.0;
 
 
 }
