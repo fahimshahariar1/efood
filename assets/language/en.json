@@ -562,5 +562,19 @@
   "large" : "Large",
   "small_price" : "$46",
   "salad" : "Salad",
-  "selected" : "Select Minimum 2 & Up to 4"
+  "selected" : "Select Minimum 2 & Up to 4",
+  "total" : "Total",
+  "vat" : "(inc. VAT/TAX)",
+
+  "total_price" : "$28.55",
+  "cucumber" : "Cucumber",
+  "tomato_tango" : "Tomato Tango",
+  "mayo" : "Mayonnaise",
+  "sauce" : "Extra Sauce",
+  "cheese" : "Extra Cheese",
+  "pepsi" : "Pepsi",
+  "chicken" : "Chicken Fry",
+  "Sauce" : "Sauce",
+  "chicken_price" : "$56",
+  "sauce_price" : "$5"
 }
