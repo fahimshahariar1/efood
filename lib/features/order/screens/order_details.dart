@@ -1,9 +1,13 @@
 
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/features/order/widgets/item_details.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
+import 'package:flutter_restaurant/utill/app_constants.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
 import 'package:flutter_restaurant/utill/images.dart';
+import 'package:http/http.dart';
 
 class OrderDetails extends StatefulWidget {
 
@@ -13,18 +17,21 @@ class OrderDetails extends StatefulWidget {
 }
 
 class _OrderDetailsState extends State<OrderDetails> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
           body: Padding(
             padding: const EdgeInsets.only(top: Dimensions.paddingSizeLargest),
             child: Column(
-
+mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    showModalBottomSheet(isScrollControlled: true,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), 
-                        topRight: Radius.circular(20))),
+                  onPressed: () async {
+                    showModalBottomSheet(isScrollControlled: true,shape:  const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
+                        topRight: Radius.circular(Dimensions.radiusExtraLarge))),
                         context: context, builder: (BuildContext context){
                       return Container(
 
@@ -34,12 +41,6 @@ class _OrderDetailsState extends State<OrderDetails> {
                       );
                     });
 
-
-                    // DraggableScrollableSheet(expand: true,
-                    //   builder: (context, controller) {
-                    //   return ItemDetails();
-                    // },);
-
                   },
                   child: itemView(Images.food, getTranslated("food_name", context), getTranslated("rate", context),
                       getTranslated("pricing", context), getTranslated("discount_price", context)),
@@ -48,6 +49,9 @@ class _OrderDetailsState extends State<OrderDetails> {
 
                 itemView(Images.food, getTranslated("food_name", context), getTranslated("rate", context),
                     getTranslated("pricing", context), getTranslated("discount_price", context)),
+
+
+
               ],
             ),
           ),
