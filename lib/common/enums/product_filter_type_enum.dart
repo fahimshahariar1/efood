@@ -1,0 +1,4 @@
+enum ProductFilterType {
+  highToLow,
+  lowToHigh,
+}
