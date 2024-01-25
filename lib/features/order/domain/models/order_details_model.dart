@@ -208,7 +208,7 @@ class Variations {
     if (json['values'] != null) {
       values = <Values>[];
       json['values'].forEach((v) {
-        values!.add(new Values.fromJson(v));
+        values!.add(Values.fromJson(v));
       });
     }
   }
