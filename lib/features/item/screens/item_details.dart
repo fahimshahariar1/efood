@@ -72,7 +72,7 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                ItemSize(product: widget.product,),
 
-                              const ItemExtras(),
+                             // const ItemExtras(),
 
                                const ItemAddons(addons: [],)
 
