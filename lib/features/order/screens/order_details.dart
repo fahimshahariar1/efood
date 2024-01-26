@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/enums/product_filter_type_enum.dart';
+
 import 'package:flutter_restaurant/common/widgets/paginated_list_view.dart';
-import 'package:flutter_restaurant/item/screens/item_details.dart';
+import 'package:flutter_restaurant/features/item/screens/item_details.dart';
+
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
+import 'package:flutter_restaurant/utill/images.dart';
 import 'package:flutter_restaurant/utill/styles.dart';
 import 'package:provider/provider.dart';
 
@@ -33,10 +36,13 @@ class _OrderDetailsState extends State<OrderDetails> {
 
   @override
   Widget build(BuildContext context) {
+
     String imageUrl = Provider.of<SplashProvider>(context).configModel?.baseUrls?.productImageUrl ?? "";
+
     return Scaffold(
       appBar: AppBar(),
-      body: Consumer<ProductProvider>(builder: (context, productProvider, child) {
+      body: Consumer<ProductProvider>(
+        builder: (context, productProvider, child) {
           return PaginatedListView(
             scrollController: scrollController,
             totalSize: productProvider.latestProductModel?.totalSize,
@@ -44,39 +50,27 @@ class _OrderDetailsState extends State<OrderDetails> {
             offset: productProvider.latestProductModel?.offset,
             itemView: productProvider.latestProductModel != null
                 ? productProvider.latestProductModel!.products!.isNotEmpty
-                ? InkWell(
-              onTap: () {
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(Dimensions.paddingSizeDefault),
-                      topLeft: Radius.circular(Dimensions.paddingSizeDefault),
-                    ),
-                  ),
-                  context: context,
-                  builder: (BuildContext context) {
-                    return const SizedBox(
-                      height: 650,
-                      child: ItemDetails(),
+                ? ListView.builder(
+              shrinkWrap: true,
+              controller: scrollController,
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => ItemDetails(product: productProvider.latestProductModel!.products![index]),
                     );
                   },
-                );
-              },
-              child: ListView.builder(
-                shrinkWrap: true,
-                controller: scrollController,
-                itemBuilder: (BuildContext context, int index) {
-                  return itemView(
+                  child: itemView(
                     productProvider.latestProductModel?.products?[index].image?.first ?? '',
                     productProvider.latestProductModel!.products?[index].name,
                     '${productProvider.latestProductModel!.products![index].price}',
                     '${productProvider.latestProductModel!.products![index].discount}',
                     imageUrl,
-                  );
-                },
-                itemCount: productProvider.latestProductModel!.products!.length,
-              ),
+                  ),
+                );
+              },
+              itemCount: productProvider.latestProductModel!.products!.length,
             )
                 : Container()
                 : const CircularProgressIndicator(),
@@ -89,11 +83,12 @@ class _OrderDetailsState extends State<OrderDetails> {
 }
 
 Widget itemView(String imagePath, String? name, String? price, String? discountPrice, String? imgBaseUrl) {
-  String imageUrl = "${imgBaseUrl!}/${imagePath ?? ''}";
 
+  String imageUrl = "$imgBaseUrl/$imagePath";
   imageUrl = imageUrl.replaceAll('[', '').replaceAll(']', '');
+
   if (kDebugMode) {
-    print(imageUrl);
+    print("Image URL: $imageUrl");
   }
 
   return SizedBox(
@@ -114,7 +109,7 @@ Widget itemView(String imagePath, String? name, String? price, String? discountP
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(name!, style: poppinsRegular),
+                Text(name!, style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall)),
                 const SizedBox(height: Dimensions.paddingSizeLarge),
                 Row(
                   children: [

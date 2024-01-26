@@ -576,5 +576,8 @@
   "chicken" : "Chicken Fry",
   "Sauce" : "Sauce",
   "chicken_price" : "$56",
-  "sauce_price" : "$5"
+  "sauce_price" : "$5",
+  "no_addons_available" : "No Addons Available",
+  "no_sizes_available" : "No Sizes Available"
+
 }
