@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_restaurant/features/order/domain/models/order_details_model.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
@@ -16,50 +15,52 @@ class ItemAddons extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-          child: Card(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: Dimensions.paddingSizeSmall,
-                    top: Dimensions.paddingSizeSmall,
-                  ),
-                  child: Text(
-                    getTranslated('addons', context)!,
-                    style: poppinsRegular,
-                  ),
-                ),
-                if (addons.isEmpty)
+          child: SizedBox(width: double.infinity,
+            child: Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Padding(
-                    padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                    padding: const EdgeInsets.only(
+                      left: Dimensions.paddingSizeSmall,
+                      top: Dimensions.paddingSizeSmall,
+                    ),
                     child: Text(
-                      getTranslated('no_addons_available', context)!,
+                      getTranslated('addons', context)!,
                       style: poppinsRegular,
                     ),
                   ),
-                for (AddOns addon in addons)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: false,
-                            onChanged: (_) {},
-                          ),
-                          Text(addon.name!, style: poppinsRegular),
-                        ],
+                  if (addons.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                      child: Text(
+                        getTranslated('no_addons_available', context)!,
+                        style: poppinsRegular,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          right: Dimensions.paddingSizeSmall,
+                    ),
+                  for (AddOns addon in addons)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Checkbox(
+                              value: false,
+                              onChanged: (_) {},
+                            ),
+                            Text(addon.name!, style: poppinsRegular),
+                          ],
                         ),
-                        child: Text(addon.price.toString()),
-                      )
-                    ],
-                  ),
-              ],
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: Dimensions.paddingSizeSmall,
+                          ),
+                          child: Text(addon.price.toString()),
+                        )
+                      ],
+                    ),
+                ],
+              ),
             ),
           ),
         ),
@@ -67,3 +68,5 @@ class ItemAddons extends StatelessWidget {
     );
   }
 }
+
+

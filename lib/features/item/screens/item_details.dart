@@ -8,6 +8,7 @@ import 'package:flutter_restaurant/features/item/widgets/item_image.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_info.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_pricing.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_size.dart';
+import 'package:flutter_restaurant/features/order/domain/models/order_details_model.dart';
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
@@ -42,9 +43,6 @@ class _ItemDetailsState extends State<ItemDetails> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return Consumer<ProductProvider>(
       builder: (context, productProvider, child){
         return Column(
@@ -70,9 +68,12 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                ItemDescription(product: widget.product,),
 
-                               ItemSize(product: widget.product,),
+                               ItemSize(products: const [],),
 
-                             // const ItemExtras(),
+                              ItemExtras(
+                                products: Products(variations: []),
+                              ),
+
 
                                const ItemAddons(addons: [],)
 
@@ -95,46 +96,3 @@ class _ItemDetailsState extends State<ItemDetails> {
 }
 
 
-
-// // Product image
-//           Image.network(
-//             "${product.image}",
-//             height: 200,
-//             width: double.infinity,
-//             fit: BoxFit.cover,
-//           ),
-//
-//           SizedBox(height: 8),
-//
-//           // Name and price
-//           Text(
-//             "${product.name}",
-//             style: TextStyle(
-//               fontSize: 22,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//           SizedBox(height: 8),
-//           Text(
-//             '\$${product.price}',
-//             style: TextStyle(fontSize: 18),
-//           ),
-//
-//           // Description
-//           SizedBox(height: 16),
-//           Text(
-//             "${product.description}",
-//             style: TextStyle(fontSize: 16),
-//           ),
-//
-//           // Variations
-//           if (product.variations!.isNotEmpty) ...[
-//             SizedBox(height: 16),
-//             //VariationSection(variations: product.variations),
-//           ],
-//
-//           // Add ons
-//           if (product.id!.isNegative) ...[
-//             SizedBox(height: 16),
-//             //AddOnSection(addOns: product.addOns),
-//           ],

@@ -1,88 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_restaurant/common/models/product_model.dart';
-import 'package:flutter_restaurant/localization/language_constrants.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
-import 'package:flutter_restaurant/utill/styles.dart';
+import '../../../common/models/product_model.dart';
 
-class ItemSize extends StatelessWidget {
-  final Product product;
+class ItemSize extends StatefulWidget {
+  final List<Product> products;
+  ItemSize({required this.products});
 
-  const ItemSize({Key? key, required this.product}) : super(key: key);
+  @override
+  _ItemSizeState createState() => _ItemSizeState();
+}
+
+class _ItemSizeState extends State<ItemSize> {
+  String? _selectedSize;
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> sizeList = [];
-
-    if (product.variations != null && product.variations!.isNotEmpty) {
-      for (Variation variation in product.variations!) {
-        if (variation.type != null) {
-          sizeList.add(
-            ListTile(
-              title: Text(variation.type?.toUpperCase() ?? ''),
-            ),
-          );
-        }
-      }
-    }
-
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: Dimensions.paddingSizeExtraLarge),
+        const Text('Select Size', style: TextStyle(fontSize: 18)),
         Padding(
-          padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-          child: Card(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  getTranslated('size', context) ?? '',
-                                  style: poppinsRegular,
-                                ),
-                                Text(
-                                  getTranslated('select_one', context) ?? '',
-                                  style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: Dimensions.containerSizeSmall,
-                        width: Dimensions.containerSizeMedium,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).dialogBackgroundColor.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
-                        ),
-                        child: Center(
-                          child: Text(
-                            getTranslated('required', context) ?? '',
-                            style: poppinsRegular.copyWith(
-                              color: Theme.of(context).dialogBackgroundColor,
-                              fontSize: Dimensions.fontSizeSmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                sizeList.isNotEmpty ? Column(children: sizeList) : Text(getTranslated('no_sizes_available', context) ?? ''),
-              ],
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 100,
+            child: Card(
+              child: ListView(
+                children: widget.products.expand((product) => product.variations ?? []).where((variation) => variation.type == 'size').map<Widget>((sizeVariation) {
+                  return ExpansionTile(
+                    title: Text(sizeVariation.name ?? ''),
+                    children: sizeVariation.values
+                        ?.map((value) => RadioListTile<String?>(
+                      title: Text(value.label ?? ''),
+                      value: value.label,
+                      groupValue: _selectedSize,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          _selectedSize = newValue;
+                        });
+                      },
+                    ))
+                        .toList() ??
+                        [],
+                  );
+                }).toList(),
+              ),
             ),
           ),
         ),
+
       ],
     );
   }
