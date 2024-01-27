@@ -46,7 +46,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           return PaginatedListView(
             scrollController: scrollController,
             totalSize: productProvider.latestProductModel?.totalSize,
-            limit: productProvider.latestProductModel!.limit,
+            limit: productProvider.latestProductModel?.limit,
             offset: productProvider.latestProductModel?.offset,
             itemView: productProvider.latestProductModel != null
                 ? productProvider.latestProductModel!.products!.isNotEmpty
@@ -56,6 +56,7 @@ class _OrderDetailsState extends State<OrderDetails> {
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
                   onTap: () {
+
                     showModalBottomSheet(
                       context: context,
                       builder: (context) => ItemDetails(product: productProvider.latestProductModel!.products![index]),
@@ -73,7 +74,7 @@ class _OrderDetailsState extends State<OrderDetails> {
               itemCount: productProvider.latestProductModel!.products!.length,
             )
                 : Container()
-                : const CircularProgressIndicator(),
+                : Center(child: const CircularProgressIndicator()),
             onPaginate: (int? offset) {},
           );
         },
@@ -83,7 +84,6 @@ class _OrderDetailsState extends State<OrderDetails> {
 }
 
 Widget itemView(String imagePath, String? name, String? price, String? discountPrice, String? imgBaseUrl) {
-
   String imageUrl = "$imgBaseUrl/$imagePath";
   imageUrl = imageUrl.replaceAll('[', '').replaceAll(']', '');
 

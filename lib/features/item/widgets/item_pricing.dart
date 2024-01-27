@@ -17,18 +17,18 @@ class ItemPricing extends StatefulWidget {
 class _ItemPricingState extends State<ItemPricing> {
 
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getLatestProductList();
-  }
-
-
-  void getLatestProductList() {
-    Provider.of<ProductProvider>(context, listen: false).getLatestProductList(1);
-  }
-
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   getLatestProductList();
+  // }
+  //
+  //
+  // void getLatestProductList() {
+  //   Provider.of<ProductProvider>(context, listen: false).getLatestProductList(1);
+  // }
+  //
 
   @override
   Widget build(BuildContext context) {

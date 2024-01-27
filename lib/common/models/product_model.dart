@@ -220,22 +220,16 @@ class Variation {
   String? _type;
   double? _price;
   int? _stock;
-  String? _name;
-  List<String>? _values;
 
-  Variation({String? type, double? price, int? stock, String? name, List<String>? values}) {
+  Variation({String? type, double? price, int? stock}) {
     _type = type;
     _price = price;
     _stock = stock;
-    _name = name;
-    _values = values!;
   }
 
   String? get type => _type;
   double? get price => _price;
   int? get stock => _stock;
-  String? get name => _name;
-  List<String>? get values => _values;
 
   Variation.fromJson(Map<String, dynamic> json) {
     _type = json['type'];
@@ -243,8 +237,6 @@ class Variation {
       _price = json['price'].toDouble();
     }
     _stock = json['stock'];
-    _name = json['name'];
-    _values = json['values'];
   }
 
   Map<String, dynamic> toJson() {
@@ -252,8 +244,6 @@ class Variation {
     data['type'] = _type;
     data['price'] = _price;
     data['stock'] = _stock;
-    data['name'] = _name;
-    data['values'] = _values;
     return data;
   }
 }

@@ -9,7 +9,7 @@ class AppConstants {
   static const String trackUri = '/api/v1/customer/order/track?order_id=';
   static const String messageUri = '/api/v1/customer/message/get';
   static const String sendMessageUri = '/api/v1/customer/message/send';
-  static const String latestProductUri = '/api/v1/products/latest/';
+  static const String latestProductUri = '/api/v1/products/latest';
   static const String forgetPasswordUri = '/api/v1/auth/forgot-password';
   static const String verifyTokenUri = '/api/v1/auth/verify-token';
   static const String resetPasswordUri = '/api/v1/auth/reset-password';

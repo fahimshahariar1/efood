@@ -30,18 +30,6 @@ class _ItemDetailsState extends State<ItemDetails> {
 
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getLatestProductList();
-  }
-
-  void getLatestProductList() {
-    Provider.of<ProductProvider>(context, listen: false).getLatestProductList(1);
-  }
-
-
-  @override
   Widget build(BuildContext context) {
     return Consumer<ProductProvider>(
       builder: (context, productProvider, child){
@@ -68,11 +56,11 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                ItemDescription(product: widget.product,),
 
-                               ItemSize(),
+                               //ItemSize(),
 
-                               //const ItemExtras(),
+                               const ItemExtras(),
 
-                              const ItemAddons(addons: [],)
+                               ItemAddons()
 
                             ],
                           ),
