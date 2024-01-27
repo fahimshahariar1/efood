@@ -133,5 +133,17 @@ class ProductProvider extends ChangeNotifier {
   }
 
 
+  void setCartVariationIndex(int index, int i) {
+    _variationIndex![index] = i;
+    _quantity = 1;
+    notifyListeners();
+  }
+
+  void setTabIndex(int index) {
+    _tabIndex = index;
+    notifyListeners();
+  }
+
+
 
 }

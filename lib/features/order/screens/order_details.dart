@@ -8,7 +8,7 @@ import 'package:flutter_restaurant/features/item/screens/item_details.dart';
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
-import 'package:flutter_restaurant/utill/images.dart';
+
 import 'package:flutter_restaurant/utill/styles.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +46,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           return PaginatedListView(
             scrollController: scrollController,
             totalSize: productProvider.latestProductModel?.totalSize,
-            limit: productProvider.latestProductModel?.limit,
+            limit: productProvider.latestProductModel!.limit,
             offset: productProvider.latestProductModel?.offset,
             itemView: productProvider.latestProductModel != null
                 ? productProvider.latestProductModel!.products!.isNotEmpty
