@@ -32,7 +32,7 @@ class ItemAddons extends StatelessWidget {
                         style: poppinsRegular,
                       ),
                     ),
-                    Text(productProvider.product.)
+                    // Text(productProvider.product.)
                   ],
                 ),
               ),

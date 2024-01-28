@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/models/product_model.dart';
-
-
-
 import 'package:flutter_restaurant/localization/language_constrants.dart';
-
 import 'package:flutter_restaurant/utill/dimensions.dart';
-
 import 'package:flutter_restaurant/utill/images.dart';
-
 import 'package:flutter_restaurant/utill/styles.dart';
+
 
 class ItemDescription extends StatelessWidget {
   final Product product;
@@ -64,8 +59,7 @@ class ItemDescription extends StatelessWidget {
         const SizedBox(height: Dimensions.paddingSizeDefault),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
-          child: Text(
-            product.description  ?? '',
+          child: Text(product.description?? '',
             style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
           ),
         )

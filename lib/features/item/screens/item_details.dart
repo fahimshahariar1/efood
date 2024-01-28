@@ -7,10 +7,8 @@ import 'package:flutter_restaurant/features/item/widgets/item_extras.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_image.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_info.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_pricing.dart';
-import 'package:flutter_restaurant/features/item/widgets/item_size.dart';
-import 'package:flutter_restaurant/features/order/domain/models/order_details_model.dart';
+
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
-import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
 import 'package:flutter_restaurant/utill/images.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +25,8 @@ class ItemDetails extends StatefulWidget {
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
+
+
 
 
   @override
@@ -58,7 +58,7 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                //ItemSize(),
 
-                               const ItemExtras(),
+                               ItemExtras(product: widget.product,),
 
                                ItemAddons()
 

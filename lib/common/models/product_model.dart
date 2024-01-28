@@ -1,3 +1,5 @@
+
+
 class ProductModel {
   int? totalSize;
   int? limit;
@@ -7,8 +9,14 @@ class ProductModel {
   List<String>? image;
   List<Product>? products;
 
-  ProductModel({this.totalSize, this.limit, this.offset, this.products, this.maxPrice, this.minPrice});
-
+  ProductModel({
+    this.totalSize,
+    this.limit,
+    this.offset,
+    this.products,
+    this.maxPrice,
+    this.minPrice,
+  });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     totalSize = int.tryParse('${json['total_size']}');
@@ -24,8 +32,9 @@ class ProductModel {
     }
   }
 
+
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = {};
     data['total_size'] = totalSize;
     data['limit'] = limit;
     data['offset'] = offset;
@@ -37,7 +46,6 @@ class ProductModel {
     return data;
   }
 }
-
 class Product {
   int? _id;
   String? _name;
@@ -217,19 +225,31 @@ class Product {
 }
 
 class Variation {
+  String? _name;
   String? _type;
   double? _price;
   int? _stock;
+  List<Values>? _values;
+  int? _min;
+  int? _max;
 
-  Variation({String? type, double? price, int? stock}) {
+  Variation({String? type, double? price, int? stock, List<Values>? values, String? name, int? min, int? max}) {
     _type = type;
     _price = price;
     _stock = stock;
+    _values = values;
+    _name = name;
+    _min = min;
+    _max = max;
   }
 
   String? get type => _type;
   double? get price => _price;
   int? get stock => _stock;
+  List<Values>? get values => _values;
+  String? get name => _name;
+  int? get min => _min;
+  int? get max => _max;
 
   Variation.fromJson(Map<String, dynamic> json) {
     _type = json['type'];
@@ -237,6 +257,13 @@ class Variation {
       _price = json['price'].toDouble();
     }
     _stock = json['stock'];
+    if (json['values'] != null) {
+      _values = [];
+      json['values'].forEach((v) {
+        _values!.add(Values.fromJson(v));
+      });
+      _name = json['name'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -244,9 +271,39 @@ class Variation {
     data['type'] = _type;
     data['price'] = _price;
     data['stock'] = _stock;
+    if (_values != null) {
+      data['values'] = _values!.map((v) => v.toJson()).toList();
+    }
+    data['name'] = _name;
     return data;
   }
 }
+
+
+class Values {
+  String? _label;
+  double? _optionPrice;
+
+  Values({String? label, double? optionPrice});
+
+  String? get label => _label;
+  double? get optionPrice => _optionPrice;
+
+  Values.fromJson(Map<String, dynamic> json) {
+    _label = json['label'];
+    _optionPrice = double.tryParse('${ json['optionPrice']}');
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    data['label'] = _label;
+    data['optionPrice'] = _optionPrice;
+    return data;
+  }
+}
+
+
+
 
 class CategoryId {
   String? _id;
@@ -323,9 +380,9 @@ class Rating {
   }
 }
 
-class PriceRange{
+class PriceRange {
   final double? startPrice;
   final double? endPrice;
 
-  PriceRange({required this.startPrice, required this.endPrice});
+  PriceRange({this.startPrice, this.endPrice});
 }
