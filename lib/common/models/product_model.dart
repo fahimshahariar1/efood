@@ -53,6 +53,7 @@ class Product {
   dynamic _image;
   double? _price;
   List<Variation>? _variations;
+  List<AddOns>? _addOns;
   double? _tax;
   bool? _status;
   String? _createdAt;
@@ -75,6 +76,7 @@ class Product {
         List<String>? image,
         double? price,
         List<Variation>? variations,
+        List<AddOns>? addOns,
         double? tax,
         bool? status,
         String? createdAt,
@@ -95,6 +97,7 @@ class Product {
     _image = image;
     _price = price;
     _variations = variations;
+    _addOns = addOns;
     _tax = tax;
     _status = status;
     _createdAt = createdAt;
@@ -126,6 +129,7 @@ class Product {
 
   double? get price => _price;
   List<Variation>? get variations => _variations;
+  List<AddOns>? get addOns => _addOns;
   double? get tax => _tax;
   bool? get status => _status;
   String? get createdAt => _createdAt;
@@ -156,6 +160,13 @@ class Product {
       _variations = [];
       json['variations'].forEach((v) {
         _variations!.add(Variation.fromJson(v));
+      });
+    }
+
+    if (json['add_ons'] != null) {
+      _addOns = <AddOns>[];
+      json['add_ons'].forEach((v) {
+        _addOns!.add(new AddOns.fromJson(v));
       });
     }
     _tax = json['tax'].toDouble();
@@ -198,6 +209,9 @@ class Product {
     data['price'] = _price;
     if (_variations != null) {
       data['variations'] = _variations!.map((v) => v.toJson()).toList();
+    }
+    if (_addOns != null) {
+      data['add_ons'] = _addOns!.map((v) => v.toJson()).toList();
     }
     data['tax'] = _tax;
     data['status'] = _status;
@@ -263,6 +277,9 @@ class Variation {
         _values!.add(Values.fromJson(v));
       });
       _name = json['name'];
+      _min = int.tryParse('${json['min']}');
+      _min = int.tryParse('${json['max']}') ;
+      
     }
   }
 
@@ -275,6 +292,8 @@ class Variation {
       data['values'] = _values!.map((v) => v.toJson()).toList();
     }
     data['name'] = _name;
+    data['min'] = _min;
+    data['max'] = _max;
     return data;
   }
 }
@@ -302,6 +321,47 @@ class Values {
   }
 }
 
+class AddOns {
+  int? id;
+  String? name;
+  int? price;
+  int? tax;
+  String? createdAt;
+  String? updatedAt;
+
+
+  AddOns(
+      {this.id,
+        this.name,
+        this.price,
+        this.tax,
+        this.createdAt,
+        this.updatedAt,
+        });
+
+  AddOns.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    price = json['price'];
+    tax = json['tax'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+
+    }
+
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['price'] = this.price;
+    data['tax'] = this.tax;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+
+    return data;
+  }
+}
 
 
 

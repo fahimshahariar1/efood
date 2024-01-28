@@ -60,7 +60,7 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                ItemExtras(product: widget.product,),
 
-                               ItemAddons()
+                               ItemAddons(product: widget.product,)
 
                             ],
                           ),
