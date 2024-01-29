@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/models/product_model.dart';
 import 'package:flutter_restaurant/helper/price_converter_helper.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
-import 'package:flutter_restaurant/utill/styles.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
+import 'package:flutter_restaurant/util/styles.dart';
+
 
 class ItemPricing extends StatefulWidget {
   const ItemPricing({Key? key, required this.product}) : super(key: key);
@@ -38,13 +39,12 @@ class _ItemPricingState extends State<ItemPricing> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       Text(
-                        getTranslated("total", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor,),),
+                        getTranslated("total", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
                       const SizedBox(width: Dimensions.paddingSizeSmall),
                       Text(getTranslated("vat", context)!, style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
                       ),

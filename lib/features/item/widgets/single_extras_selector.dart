@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/models/product_model.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
-import 'package:flutter_restaurant/utill/styles.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
+import 'package:flutter_restaurant/util/styles.dart';
 
 class SingleSelector extends StatefulWidget {
   final Product product;

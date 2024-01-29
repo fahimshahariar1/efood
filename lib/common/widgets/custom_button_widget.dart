@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   final Function? onTap;

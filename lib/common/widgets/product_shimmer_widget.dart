@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/provider/theme_provider.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
 import 'package:flutter_restaurant/common/widgets/rating_bar_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';

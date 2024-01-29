@@ -3,7 +3,7 @@ import 'package:flutter_restaurant/common/models/product_model.dart';
 import 'package:flutter_restaurant/features/item/widgets/multi_extras_selector.dart';
 import 'package:flutter_restaurant/features/item/widgets/single_extras_selector.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
-import 'package:flutter_restaurant/utill/styles.dart';
+import 'package:flutter_restaurant/util/styles.dart';
 
 class ItemExtras extends StatefulWidget {
   final Product product;

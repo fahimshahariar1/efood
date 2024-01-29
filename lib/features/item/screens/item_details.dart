@@ -10,8 +10,8 @@ import 'package:flutter_restaurant/features/item/widgets/item_pricing.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_size.dart';
 
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
-import 'package:flutter_restaurant/utill/images.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
+import 'package:flutter_restaurant/util/images.dart';
 import 'package:provider/provider.dart';
 
 class ItemDetails extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_restaurant/common/models/cart_model.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartRepo{

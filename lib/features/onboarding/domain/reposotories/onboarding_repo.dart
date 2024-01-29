@@ -5,7 +5,7 @@ import 'package:flutter_restaurant/data/datasource/remote/exception/api_error_ha
 import 'package:flutter_restaurant/common/models/api_response_model.dart';
 import 'package:flutter_restaurant/features/onboarding/domain/models/onboarding_model.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
-import 'package:flutter_restaurant/utill/images.dart';
+import 'package:flutter_restaurant/util/images.dart';
 
 class OnBoardingRepo {
   final DioClient? dioClient;

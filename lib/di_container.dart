@@ -9,7 +9,7 @@ import 'package:flutter_restaurant/features/language/providers/language_provider
 import 'package:flutter_restaurant/features/onboarding/providers/onboarding_provider.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
 import 'package:flutter_restaurant/provider/theme_provider.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'data/datasource/remote/dio/dio_client.dart';

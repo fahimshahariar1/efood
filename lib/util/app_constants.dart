@@ -1,5 +1,5 @@
 import 'package:flutter_restaurant/common/models/language_model.dart';
-import 'package:flutter_restaurant/utill/images.dart';
+import 'package:flutter_restaurant/util/images.dart';
 
 class AppConstants {
   static const String appName = 'eFood';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/models/api_response_model.dart';
 import 'package:flutter_restaurant/features/onboarding/domain/models/onboarding_model.dart';
 import 'package:flutter_restaurant/features/onboarding/domain/reposotories/onboarding_repo.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingProvider with ChangeNotifier {

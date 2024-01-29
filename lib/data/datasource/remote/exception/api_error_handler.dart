@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_restaurant/common/models/error_response_model.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/main.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
 
 class ApiErrorHandler {
   static dynamic getMessage(error) {

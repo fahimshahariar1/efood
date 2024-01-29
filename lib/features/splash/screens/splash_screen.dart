@@ -10,9 +10,9 @@ import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/main.dart';
 import 'package:flutter_restaurant/features/onboarding/providers/onboarding_provider.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
-import 'package:flutter_restaurant/utill/images.dart';
-import 'package:flutter_restaurant/utill/styles.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
+import 'package:flutter_restaurant/util/images.dart';
+import 'package:flutter_restaurant/util/styles.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 

@@ -20,7 +20,7 @@ import 'package:flutter_restaurant/features/splash/providers/splash_provider.dar
 import 'package:flutter_restaurant/provider/theme_provider.dart';
 import 'package:flutter_restaurant/theme/dark_theme.dart';
 import 'package:flutter_restaurant/theme/light_theme.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
 import 'package:flutter_restaurant/common/widgets/third_party_chat_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';

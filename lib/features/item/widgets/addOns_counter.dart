@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
 
 class AddonsCounter extends StatefulWidget {
   const AddonsCounter({Key? key}) : super(key: key);

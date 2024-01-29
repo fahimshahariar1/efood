@@ -7,9 +7,9 @@ import 'package:flutter_restaurant/features/item/screens/item_details.dart';
 
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
 
-import 'package:flutter_restaurant/utill/styles.dart';
+import 'package:flutter_restaurant/util/styles.dart';
 import 'package:provider/provider.dart';
 
 class OrderDetails extends StatefulWidget {

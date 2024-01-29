@@ -5,7 +5,7 @@ import 'package:flutter_restaurant/common/models/config_model.dart';
 import 'package:flutter_restaurant/common/models/offline_payment_model.dart';
 import 'package:flutter_restaurant/features/splash/domain/reposotories/splash_repo.dart';
 import 'package:flutter_restaurant/helper/date_converter_helper.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
 import 'package:flutter_restaurant/helper/custom_snackbar_helper.dart';
 import 'package:provider/provider.dart';
 

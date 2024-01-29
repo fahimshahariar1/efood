@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/helper/responsive_helper.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
-import 'package:flutter_restaurant/utill/dimensions.dart';
-import 'package:flutter_restaurant/utill/images.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
+import 'package:flutter_restaurant/util/dimensions.dart';
+import 'package:flutter_restaurant/util/images.dart';
 import 'package:flutter_restaurant/helper/router_helper.dart';
-import 'package:flutter_restaurant/utill/styles.dart';
+import 'package:flutter_restaurant/util/styles.dart';
 import 'package:flutter_restaurant/common/widgets/custom_button_widget.dart';
 import 'package:provider/provider.dart';
 

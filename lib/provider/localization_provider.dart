@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/data/datasource/remote/dio/dio_client.dart';
-import 'package:flutter_restaurant/utill/app_constants.dart';
+import 'package:flutter_restaurant/util/app_constants.dart';
 import 'package:flutter_restaurant/features/home/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
