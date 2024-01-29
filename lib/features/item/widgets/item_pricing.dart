@@ -5,11 +5,17 @@ import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/util/dimensions.dart';
 import 'package:flutter_restaurant/util/styles.dart';
 
-
 class ItemPricing extends StatefulWidget {
-  const ItemPricing({Key? key, required this.product}) : super(key: key);
-
   final Product product;
+  final List<double> selectedAddonPrices;
+  final List<int> selectedAddonQuantities;
+
+  ItemPricing({
+    Key? key,
+    required this.product,
+    required this.selectedAddonPrices,
+    required this.selectedAddonQuantities,
+  }) : super(key: key);
 
   @override
   State<ItemPricing> createState() => _ItemPricingState();
@@ -17,18 +23,31 @@ class ItemPricing extends StatefulWidget {
 
 class _ItemPricingState extends State<ItemPricing> {
   int quantity = 1;
-  double discountedPrice = 0;
+  double totalPrice = 0;
 
   @override
   void initState() {
     super.initState();
-    updateDiscountedPrice();
+    calculateTotal();
   }
 
-  void updateDiscountedPrice() {
-    setState(() {
-      discountedPrice = PriceConverterHelper.convertWithDiscount(widget.product.price, widget.product.discount, widget.product.discountType,)!;
-    });
+  void calculateTotal() {
+    double? basePrice = widget.product.price;
+    double? discountedPrice = PriceConverterHelper.convertWithDiscount(
+      basePrice,
+      widget.product.discount,
+      widget.product.discountType,
+    );
+
+    double addonsTotalPrice = 0;
+    for (int i = 0; i < widget.selectedAddonPrices.length; i++) {
+      addonsTotalPrice += widget.selectedAddonPrices[i] * widget.selectedAddonQuantities[i];
+    }
+
+    totalPrice = (discountedPrice! * quantity);
+    totalPrice += addonsTotalPrice;
+
+    setState(() {});
   }
 
   @override
@@ -39,14 +58,19 @@ class _ItemPricingState extends State<ItemPricing> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       Text(
-                        getTranslated("total", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
+                        getTranslated("total", context)!,
+                        style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),
+                      ),
                       const SizedBox(width: Dimensions.paddingSizeSmall),
-                      Text(getTranslated("vat", context)!, style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
+                      Text(
+                        getTranslated("vat", context)!,
+                        style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
                       ),
                     ],
                   ),
@@ -63,7 +87,7 @@ class _ItemPricingState extends State<ItemPricing> {
                         onTap: () {
                           setState(() {
                             quantity = quantity > 1 ? quantity - 1 : 1;
-                            updateDiscountedPrice();
+                            calculateTotal();
                           });
                         },
                         child: Container(
@@ -88,7 +112,7 @@ class _ItemPricingState extends State<ItemPricing> {
                           onTap: () {
                             setState(() {
                               quantity++;
-                              updateDiscountedPrice();
+                              calculateTotal();
                             });
                           },
                           child: Container(
@@ -103,8 +127,7 @@ class _ItemPricingState extends State<ItemPricing> {
                   ),
                   Column(
                     children: [
-                      Text('\$$discountedPrice', style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),
-                      ),
+                      Text('\$$totalPrice', style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor)),
                       Container(
                         height: 30,
                         width: 150,
@@ -113,7 +136,7 @@ class _ItemPricingState extends State<ItemPricing> {
                           color: Theme.of(context).dialogBackgroundColor,
                         ),
                         child: Center(
-                          child: Text(getTranslated("add_to_cart", context)!, style: poppinsRegular.copyWith(color: Colors.white),),
+                          child: Text(getTranslated("add_to_cart", context)!, style: poppinsRegular.copyWith(color: Colors.white)),
                         ),
                       ),
                     ],
@@ -127,5 +150,3 @@ class _ItemPricingState extends State<ItemPricing> {
     );
   }
 }
-
-

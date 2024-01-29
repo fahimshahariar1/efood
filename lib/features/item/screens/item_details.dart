@@ -7,8 +7,6 @@ import 'package:flutter_restaurant/features/item/widgets/item_extras.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_image.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_info.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_pricing.dart';
-import 'package:flutter_restaurant/features/item/widgets/item_size.dart';
-
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
 import 'package:flutter_restaurant/util/dimensions.dart';
 import 'package:flutter_restaurant/util/images.dart';
@@ -19,15 +17,11 @@ class ItemDetails extends StatefulWidget {
 
   const ItemDetails({Key? key, required this.product}) : super(key: key);
 
-
-
   @override
   State<ItemDetails> createState() => _ItemDetailsState();
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
-
-
 
 
   @override
@@ -57,9 +51,16 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                ItemDescription(product: widget.product,),
 
-                               ItemExtras(product: widget.product,),
+                               ItemExtras(product: widget.product, onVariationSelected: (List<int> value) {  },),
 
-                               ItemAddons(product: widget.product,)
+                              ItemAddons(
+                                product: widget.product,
+                                onAddonsSelected: (List<double> selectedAddonPrices, List<int> selectedAddonQuantities) {
+                                  // Calculate the total price based on selected addon prices and quantities
+                                  // Update the UI or perform any necessary actions here
+                                },
+                              )
+
 
                             ],
                           ),
@@ -70,7 +71,7 @@ class _ItemDetailsState extends State<ItemDetails> {
               ),
             ),
 
-             ItemPricing(product: widget.product,)
+             ItemPricing(product: widget.product, selectedAddonPrices: [], selectedAddonQuantities: [],)
 
           ],
         );
