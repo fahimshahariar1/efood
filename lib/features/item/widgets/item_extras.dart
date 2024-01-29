@@ -21,20 +21,38 @@ class _ItemExtrasState extends State<ItemExtras> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        child: ListView.builder(itemCount: widget.product.variations!.length,
+        child: ListView.builder(
+            itemCount: widget.product.variations!.length,
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true, itemBuilder: (context, index) {
               return Padding(padding: const EdgeInsets.all(8),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (widget.product.variations?[index].type == 'single')
-                      Text("${widget.product.variations?[index].name}", style: poppinsRegular,),
-                      Text(getTranslated("select_one", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
-                      SingleSelector(product: widget.product),
+                    widget.product.variations?[index].type == 'single' ?
+                      Column( crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Text("${widget.product.variations?[index].name}", style: poppinsRegular,),
+                          Text(getTranslated("select_one", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
+                          SingleSelector(product: widget.product, variationIndex: index),
+                        ],
+                      ) : const SizedBox(),
 
-                    if (widget.product.variations?[index].type == 'multi')
-                      Text("${widget.product.variations?[index].name}", style: poppinsRegular,),
-                      MultiSelector(product: widget.product)
+                    widget.product.variations?[index].type == 'multi' ?
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("${widget.product.variations?[index].name}", style: poppinsRegular,),
+                        Text("Select Minimum ${widget.product.variations?[index].min} Up to "
+                            "${widget.product.variations?[index].max}"),
+                        MultiSelector(product: widget.product, variationIndex: index,)
+                      ],
+                    ) : const SizedBox()
+
+
+
+
+
+
+
                   ],
                 ),
               );

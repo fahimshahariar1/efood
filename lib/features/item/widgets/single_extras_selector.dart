@@ -6,8 +6,9 @@ import 'package:flutter_restaurant/utill/styles.dart';
 
 class SingleSelector extends StatefulWidget {
   final Product product;
+  final int variationIndex;
 
-  const SingleSelector({Key? key, required this.product}) : super(key: key);
+  const SingleSelector({Key? key, required this.product, required this.variationIndex}) : super(key: key);
 
   @override
   State<SingleSelector> createState() => _SingleSelectorState();
@@ -20,38 +21,33 @@ class _SingleSelectorState extends State<SingleSelector> {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: widget.product.variations?.length,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: widget.product.variations![index].values?.length,
-          itemBuilder: (context, token) {
-            return Column(
+      itemCount: widget.product.variations![widget.variationIndex].values?.length,
+      itemBuilder: (context, token) {
+        return Column(
+          children: [
+            const SizedBox(height: Dimensions.paddingSizeDefault),
+            Column(
               children: [
-                const SizedBox(height: Dimensions.paddingSizeDefault),
-                Column(
-                  children: [
-                    ListTile(
-                      leading: Radio(
-                        value: token,
-                        groupValue: selectedOption,
-                        onChanged: (int? value) {
-                          setState(() {
-                            selectedOption = value;
-                          });
-                        },
-                      ),
-                      title: Text("${widget.product.variations![index].values![token].label}", style: poppinsRegular,),
-                      trailing: Text("\$${widget.product.variations![index].values![token].optionPrice}", style: poppinsRegular,),
-                    ),
-                    const SizedBox(height: Dimensions.paddingSizeDefault),
-                  ],
+                ListTile(
+                  leading: Radio(
+                    value: token,
+                    groupValue: selectedOption,
+                    onChanged: (int? value) {
+                      setState(() {
+                        selectedOption = value;
+                      });
+                    },
+                  ),
+                  title: Text("${widget.product.variations![widget.variationIndex].values![token].label}",
+                    style: poppinsRegular,),
+                  trailing: Text("\$${widget.product.variations![widget.variationIndex].values![token].optionPrice}",
+                    style: poppinsRegular,),
                 ),
+                const SizedBox(height: Dimensions.paddingSizeDefault),
               ],
-            );
-          },
+            ),
+          ],
         );
       },
     );
