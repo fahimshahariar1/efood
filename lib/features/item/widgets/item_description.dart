@@ -28,27 +28,20 @@ class ItemDescription extends StatelessWidget {
                 ),
               ),
               Row(children: [
-                Container(
+                Container( width: Dimensions.containerSizeMedium, height: Dimensions.containerSizeSmallest,
                   decoration: BoxDecoration(
                     color: Theme.of(context).dialogBackgroundColor.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault),
                   ),
-                  child: Row(
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-                        child: Image.asset(
-                          Images.nonveg,
-                          height: Dimensions.paddingSizeExtraLarge,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                      product.productType == "veg" ?
+                      Center(
                         child: Text(
-                          getTranslated('non_veg', context)!,
-                          style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
+                          "${product.productType?.toUpperCase()}",
+                          style: rubikMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
                         ),
-                      ),
+                      ) : Text(getTranslated("non_veg", context)!.toUpperCase())
                     ],
                   ),
                 )

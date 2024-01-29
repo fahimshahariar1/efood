@@ -7,6 +7,7 @@ import 'package:flutter_restaurant/features/item/widgets/item_extras.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_image.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_info.dart';
 import 'package:flutter_restaurant/features/item/widgets/item_pricing.dart';
+import 'package:flutter_restaurant/features/item/widgets/item_size.dart';
 
 import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
@@ -56,7 +57,7 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                ItemDescription(product: widget.product,),
 
-                               //ItemSize(),
+                               ItemSize(product: widget.product,),
 
                                ItemExtras(product: widget.product,),
 
@@ -71,7 +72,7 @@ class _ItemDetailsState extends State<ItemDetails> {
               ),
             ),
 
-            const ItemPricing()
+             ItemPricing(product: widget.product,)
 
           ],
         );

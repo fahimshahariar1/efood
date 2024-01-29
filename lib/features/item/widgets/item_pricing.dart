@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_restaurant/features/product/providers/product_provider.dart';
+import 'package:flutter_restaurant/common/models/product_model.dart';
+
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/utill/dimensions.dart';
 import 'package:flutter_restaurant/utill/styles.dart';
-import 'package:provider/provider.dart';
+
 
 class ItemPricing extends StatefulWidget {
-  const ItemPricing({Key? key}) : super(key: key);
+  const ItemPricing({Key? key, required this.product}) : super(key: key);
 
-
+  final Product product;
 
   @override
   State<ItemPricing> createState() => _ItemPricingState();
@@ -17,23 +18,9 @@ class ItemPricing extends StatefulWidget {
 class _ItemPricingState extends State<ItemPricing> {
 
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   getLatestProductList();
-  // }
-  //
-  //
-  // void getLatestProductList() {
-  //   Provider.of<ProductProvider>(context, listen: false).getLatestProductList(1);
-  // }
-  //
-
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProductProvider>(builder: (context, productProvider, child) {
-      return
+    return
         Column(
           children: [
             Padding(
@@ -44,12 +31,17 @@ class _ItemPricingState extends State<ItemPricing> {
                     children: [
                       Row(
                         children: [
-                          Text(getTranslated("total", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
-                          const SizedBox(width: Dimensions.paddingSizeSmall,),
-                          Text(getTranslated("vat", context)!, style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall),),
+                          Text(getTranslated("total", context)!,
+                            style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor)),
+
+                          const SizedBox(width: Dimensions.paddingSizeSmall),
+                          Text(getTranslated("vat", context)!,
+                            style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
+
                         ],
                       ),
-                      Text(getTranslated("total_price", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
+                      Text("\$${widget.product.price}",
+                        style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor)),
                     ],
                   ),
                   const SizedBox(height: 5,),
@@ -88,7 +80,6 @@ class _ItemPricingState extends State<ItemPricing> {
             )
           ],
         );
-    });
   }
 }
 

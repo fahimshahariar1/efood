@@ -30,7 +30,7 @@ class _SingleSelectorState extends State<SingleSelector> {
             Column(
               children: [
                 ListTile(
-                  leading: Radio(
+                  leading: Radio(activeColor: Theme.of(context).hintColor,
                     value: token,
                     groupValue: selectedOption,
                     onChanged: (int? value) {

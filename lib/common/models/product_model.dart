@@ -68,6 +68,7 @@ class Product {
   String? _unit;
   int? _totalStock;
   List<Rating>? _rating;
+  String? _productType;
 
   Product(
       {int? id,
@@ -90,7 +91,8 @@ class Product {
         int? wishlistCount,
         String? unit,
         int? totalStock,
-        List<Rating>? rating}) {
+        List<Rating>? rating,
+        String? productType}) {
     _id = id;
     _name = name;
     _description = description;
@@ -112,6 +114,7 @@ class Product {
     _unit = unit;
     _totalStock = totalStock;
     _rating = rating;
+    _productType = productType;
   }
 
   int? get id => _id;
@@ -144,6 +147,7 @@ class Product {
   String? get unit => _unit;
   int? get totalStock => _totalStock;
   List<Rating>? get rating => _rating;
+  String? get productType => _productType;
 
   Product copyWith(int count){
     _wishlistCount = count;
@@ -197,6 +201,7 @@ class Product {
       json['rating'].forEach((v) {
         _rating!.add(Rating.fromJson(v));
       });
+      _productType = json['product_type'];
     }
   }
 
@@ -234,6 +239,7 @@ class Product {
     if (_rating != null) {
       data['rating'] = _rating!.map((v) => v.toJson()).toList();
     }
+    data['product-type'] = _productType;
     return data;
   }
 }
