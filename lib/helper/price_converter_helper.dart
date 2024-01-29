@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_restaurant/common/models/product_model.dart';
+
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/main.dart';
 import 'package:flutter_restaurant/features/splash/providers/splash_provider.dart';

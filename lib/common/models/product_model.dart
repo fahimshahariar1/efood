@@ -284,8 +284,7 @@ class Variation {
       });
       _name = json['name'];
       _min = int.tryParse('${json['min']}');
-      _min = int.tryParse('${json['max']}') ;
-      
+      _max = int.tryParse('${json['max']}') ;
     }
   }
 

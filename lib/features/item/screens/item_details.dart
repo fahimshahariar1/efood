@@ -57,8 +57,6 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                                ItemDescription(product: widget.product,),
 
-                               ItemSize(product: widget.product,),
-
                                ItemExtras(product: widget.product,),
 
                                ItemAddons(product: widget.product,)

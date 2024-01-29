@@ -38,7 +38,8 @@ class _ItemInfoState extends State<ItemInfo> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("${widget.product.name}", style: poppinsRegular.copyWith(fontWeight: FontWeight.bold)),
+                Text("${widget.product.name}", style: poppinsRegular.copyWith(fontWeight: FontWeight.bold,
+                fontSize: Dimensions.fontSizeSmall)),
                 const SizedBox(height: Dimensions.paddingSizeExtraSmall,),
                 Row(
                   children: [
