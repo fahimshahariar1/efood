@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/models/product_model.dart';
+import 'package:flutter_restaurant/helper/price_converter_helper.dart';
 
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 
@@ -22,6 +23,8 @@ class _ItemInfoState extends State<ItemInfo> {
 
   @override
   Widget build(BuildContext context) {
+    double? discountedPrice = PriceConverterHelper.convertWithDiscount(widget.product.price!, widget.product.discount, widget.product.discountType);
+
     return Container(
       transform: Matrix4.translationValues(0, -50, 0),
       height: Dimensions.containerSizeMedium,
@@ -52,11 +55,12 @@ class _ItemInfoState extends State<ItemInfo> {
           ),
           Row(
             children: [
-              Text('${widget.product.discount}', style: rubikRegular.copyWith(decoration: TextDecoration.lineThrough, color: Theme.of(context).hintColor)),
+              Text('${widget.product.price}', style: rubikRegular.copyWith(decoration: TextDecoration.lineThrough, color: Theme.of(context).hintColor)),
               const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
               Padding(
                 padding: const EdgeInsets.only(right: Dimensions.paddingSizeDefault),
-                child: Text('${widget.product.price}', style: rubikMedium.copyWith(fontSize: Dimensions.fontSizeLarge)),
+
+                child: Text('$discountedPrice', style: rubikMedium.copyWith(fontSize: Dimensions.fontSizeLarge)),
               ),
             ],
           ),

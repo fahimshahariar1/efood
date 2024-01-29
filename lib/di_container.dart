@@ -14,6 +14,8 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'data/datasource/remote/dio/dio_client.dart';
 import 'data/datasource/remote/dio/logging_interceptor.dart';
+import 'features/cart/domain/repositories/cart_repo.dart';
+import 'features/cart/provider/cart_provider.dart';
 
 final sl = GetIt.instance;
 
@@ -26,6 +28,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => LanguageRepo());
   sl.registerLazySingleton(() => OnBoardingRepo(dioClient: sl()));
   sl.registerLazySingleton(() => ProductRepo(dioClient: sl()));
+  sl.registerLazySingleton(() => CartRepo(sharedPreferences: sl()));
+
 
 
   // Provider
@@ -35,6 +39,7 @@ Future<void> init() async {
   sl.registerFactory(() => LanguageProvider(languageRepo: sl()));
   sl.registerFactory(() => OnBoardingProvider(onboardingRepo: sl(), sharedPreferences: sl()));
   sl.registerFactory(() => ProductProvider(productRepo: sl()));
+  sl.registerFactory(() => CartProvider(cartRepo: sl()));
 
 
   // External

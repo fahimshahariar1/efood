@@ -37,63 +37,69 @@ class _ItemAddonsState extends State<ItemAddons> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               widget.product.addOns != null && widget.product.addOns!.isNotEmpty ?
-             Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 Padding(
-                   padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall, left: Dimensions.paddingSizeSmall),
-                   child: Text(getTranslated('addons', context)!, style: poppinsRegular,
-                   ),
-                 ),
-                 ListView.builder(itemCount: widget.product.addOns!.length, shrinkWrap: true,
-                   physics: const NeverScrollableScrollPhysics(),
-                   itemBuilder: (context, index) {
-                     return Column(children: [
-                       const SizedBox(height: Dimensions.paddingSizeDefault),
-                       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         children: [
-                           InkWell(
-                             child: Checkbox(activeColor: Theme.of(context).dialogBackgroundColor,
-                               value: isCheckedList[index],
-                               onChanged: (bool? value) {
-                                 setState(() {
-                                   isCheckedList[index] = value ?? false;
-                                   if (value ?? false) {
-                                     counter++;
-                                   } else {
-                                     if (counter > 0) {
-                                       counter--;
-                                     }
-                                   }
-                                 });
-                               },
-                             ),
-                           ),
-                           Text("${widget.product.addOns![index].name}", style: poppinsRegular,
-                           ),
-                           Padding(
-                             padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
-                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                               children: [
-
-                                 Text("\$${widget.product.addOns![index].price}", style: poppinsRegular),
-                                 const SizedBox(width: Dimensions.paddingSizeSmall),
-
-                                 const AddonsCounter()
-
-                               ],
-                             ),
-                           )
-                         ],
-                       ),
-                       const SizedBox(height: Dimensions.paddingSizeDefault),
-                     ],
-                     );
-                   },
-                 ),
-               ],
-             ) : const SizedBox()
-
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall, left: Dimensions.paddingSizeSmall),
+                      child: Text(getTranslated('addons', context)!, style: poppinsRegular),
+                    ),
+                    ListView.builder(itemCount: widget.product.addOns!.length, shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            const SizedBox(height: Dimensions.paddingSizeDefault),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      isCheckedList[index] = !isCheckedList[index];
+                                      if (isCheckedList[index]) {
+                                        counter++;
+                                      } else {
+                                        counter--;
+                                      }
+                                    });
+                                  },
+                                  child: Checkbox(
+                                    activeColor: Theme.of(context).dialogBackgroundColor,
+                                    value: isCheckedList[index],
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        isCheckedList[index] = value ?? false;
+                                        if (value ?? false) {
+                                          counter++;
+                                        } else {
+                                          if (counter > 0) {
+                                            counter--;
+                                          }
+                                        }
+                                      });
+                                    },
+                                  ),
+                                ),
+                                Text("${widget.product.addOns![index].name}", style: poppinsRegular),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("\$${widget.product.addOns![index].price}", style: poppinsRegular),
+                                      const SizedBox(width: Dimensions.paddingSizeSmall),
+                                      if (isCheckedList[index]) const AddonsCounter(),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: Dimensions.paddingSizeDefault),
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ): const SizedBox(),
             ],
           ),
         ),

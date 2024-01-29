@@ -31,7 +31,8 @@ class _ItemExtrasState extends State<ItemExtras> {
                     widget.product.variations?[index].type == 'single' ?
                       Column( crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text("${widget.product.variations?[index].name}", style: poppinsRegular,),
-                          Text(getTranslated("select_one", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
+                          Text(getTranslated("select_one", context)!,
+                            style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor),),
                           SingleSelector(product: widget.product, variationIndex: index),
                         ],
                       ) : const SizedBox(),
@@ -46,12 +47,6 @@ class _ItemExtrasState extends State<ItemExtras> {
                         MultiSelector(product: widget.product, variationIndex: index,)
                       ],
                     ) : const SizedBox()
-
-
-
-
-
-
 
                   ],
                 ),
