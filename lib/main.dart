@@ -27,6 +27,7 @@ import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'di_container.dart' as di;
 import 'common/widgets/cookies_widget.dart';
+import 'features/cart/provider/cart_provider.dart';
 import 'features/product/providers/product_provider.dart';
 
 
@@ -106,6 +107,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<ProductProvider>()),
+      ChangeNotifierProvider(create: (context) => di.sl<CartProvider>()),
     ],
     child: MyApp(orderId: orderID, isWeb: !kIsWeb, route: path),
   ));

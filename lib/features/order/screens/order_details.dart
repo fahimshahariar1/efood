@@ -74,7 +74,7 @@ class _OrderDetailsState extends State<OrderDetails> {
               itemCount: productProvider.latestProductModel!.products!.length,
             )
                 : Container()
-                : Center(child: const CircularProgressIndicator()),
+                : const Center(child: CircularProgressIndicator()),
             onPaginate: (int? offset) {},
           );
         },

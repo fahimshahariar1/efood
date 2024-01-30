@@ -35,11 +35,11 @@ class CartProvider extends ChangeNotifier {
 
   void setQuantity({
     required bool isIncrement,
-    required CartModel cart,
+     CartModel? cart,
     required int productIndex,
     required bool fromProductView
   }) {
-    int index = fromProductView ? productIndex : _cartList.indexOf(cart);
+    int index = fromProductView ? productIndex : _cartList.indexOf(cart!);
 
     if (isIncrement) {
       _cartList[index].quantity = _cartList[index].quantity! + 1;
@@ -69,4 +69,25 @@ class CartProvider extends ChangeNotifier {
       }
     }
   }
+
+  void setPrice(double price, {bool isUpdate = false}){
+    _totalPrice = price;
+    if(isUpdate){
+      notifyListeners();
+    }
+  }
+
+  int? getCartProductIndex(CartModel? cartModel) {
+    for(int index = 0; index < _cartList.length; index ++) {
+      if(_cartList[index]!.product!.id == cartModel!.product!.id && (
+          _cartList[index]!.variation!.isNotEmpty && cartModel.variation!.isNotEmpty ? _cartList[index]!.variation![0].type == cartModel.variation![0].type : true
+      )) {
+        return index;
+      }
+    }
+    return null;
+  }
+
 }
+
+
