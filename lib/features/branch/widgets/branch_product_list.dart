@@ -26,6 +26,7 @@ class _BranchProductState extends State<BranchProduct> {
               prefixIcon: Icon(CupertinoIcons.search, color: Theme.of(context).hintColor,)
           )),
         ),
+
         const OrderDetails(),
       ],
     );

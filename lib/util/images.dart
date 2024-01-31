@@ -72,6 +72,7 @@ class   Images {
   static const String naga = 'assets/image/naga.png';
   static const String nonveg = 'assets/image/non_veg.png';
   static const String restaurant = 'assets/image/restaurant.png';
+  static const String locationNew = 'assets/image/location_new.png';
 
 
 

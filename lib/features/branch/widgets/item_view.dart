@@ -1,10 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_restaurant/common/models/product_model.dart';
+import 'package:flutter_restaurant/helper/price_converter_helper.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/util/dimensions.dart';
 import 'package:flutter_restaurant/util/styles.dart';
 
 class ItemView extends StatefulWidget {
+
+  final Product? product;
   final String imagePath;
   final String? name;
   final String? price;
@@ -17,7 +21,7 @@ class ItemView extends StatefulWidget {
     this.name,
     this.price,
     this.discountPrice,
-    this.imgBaseUrl,
+    this.imgBaseUrl, this.product,
   }) : super(key: key);
 
   @override
@@ -40,6 +44,9 @@ class _ItemViewState extends State<ItemView> {
 
   @override
   Widget build(BuildContext context) {
+
+    double? discountedPrice = PriceConverterHelper.convertWithDiscount(widget.product?.price!, widget.product?.discount, widget.product?.discountType);
+
     return SizedBox(
       height: Dimensions.containerSizeLarge,
       child: Padding(
@@ -47,7 +54,9 @@ class _ItemViewState extends State<ItemView> {
         child: Card(
           child: Column(
             children: [
-              Image.network(imageUrl, fit: BoxFit.cover, height: 80, width: double.infinity,
+              ClipRRect(borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault),
+                child: Image.network(imageUrl, fit: BoxFit.cover, height: 80, width: double.infinity,
+                ),
               ),
               const SizedBox(height: Dimensions.paddingSizeSmall,),
 
@@ -83,11 +92,11 @@ class _ItemViewState extends State<ItemView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("\$${widget.discountPrice}", style: rubikMedium.copyWith(decoration: TextDecoration.lineThrough,
+                  Text("\$${widget.price}", style: rubikMedium.copyWith(decoration: TextDecoration.lineThrough,
                     decorationColor: Colors.grey, color: Colors.grey,
                     ),
                   ),
-                  Text("\$${widget.price}", style: rubikRegular,),
+                  Text("\$$discountedPrice", style: rubikRegular,),
                 ],
               ),
 
