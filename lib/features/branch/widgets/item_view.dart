@@ -79,8 +79,13 @@ class _ItemViewState extends State<ItemView> {
                   ],
               ),
               ),
-              Text(widget.name!, maxLines: 1,
-                style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeDefault, ),),
+              Row(
+                children: [
+                  Text(widget.name!, maxLines: 1,
+                    style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeDefault, ),),
+                  Image(image: image)
+                ],
+              ),
 
               Row(mainAxisAlignment: MainAxisAlignment.center,
                 children: [

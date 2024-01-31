@@ -27,6 +27,16 @@ class _BranchProductState extends State<BranchProduct> {
           )),
         ),
 
+        Row(
+          children: [
+            Text("Popular"),
+            Text("Chef's Choices"),
+            Text("Todays Deal"),
+            Text("Burger"),
+            Text("Random"),
+          ],
+        ),
+
         const OrderDetails(),
       ],
     );

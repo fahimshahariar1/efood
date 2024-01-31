@@ -34,7 +34,7 @@ class _BranchCarouselState extends State<BranchCarousel> {
             },
           ),
           itemBuilder: (context, index, _) {
-            return widget.bannerList != null && widget.bannerList!.isNotEmpty ?
+            return (widget.bannerList?.isNotEmpty ?? false) ?
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.network(

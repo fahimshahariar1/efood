@@ -37,11 +37,14 @@ class _RestaurantInfoState extends State<RestaurantInfo> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+
                   Padding(
                     padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
                     child: Text(getTranslated("branch_info", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor,
                         fontSize: Dimensions.fontSizeLarge, fontWeight: FontWeight.w600)),
                   ),
+                  Container(transform: Matrix4.translationValues(0, -20, 0),
+                      child: Image.asset('assets/image/rlogo.png')),
 
                 ],
               ),
