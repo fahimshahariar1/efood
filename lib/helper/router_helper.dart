@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/models/product_model.dart';
+import 'package:flutter_restaurant/features/branch/screens/branch_screen.dart';
 import 'package:flutter_restaurant/features/home/screens/home_screen.dart';
 import 'package:flutter_restaurant/features/language/screens/choose_language_screen.dart';
 import 'package:flutter_restaurant/features/onboarding/screens/onboarding_screen.dart';
@@ -160,7 +161,7 @@ class RouterHelper {
       GoRoute(path: onBoardingScreen, builder: (context, state) => OnBoardingScreen()),
       GoRoute(path: welcomeScreen, builder: (context, state) => _routeHandler(context, const WelcomeScreen())),
       //GoRoute(path: dashboard, builder: (context, state) => _routeHandler(context, const HomeScreen(true))),
-      GoRoute(path: dashboard, builder: (context, state) => _routeHandler(context,  OrderDetails())),
+      GoRoute(path: dashboard, builder: (context, state) => _routeHandler(context,  const Branch())),
 
 
 

@@ -14,6 +14,7 @@ ThemeData light = ThemeData(
   shadowColor: Colors.grey[300],
   highlightColor: Color(0xffFF8200),
   dialogBackgroundColor: const Color(0xffFF7E81),
+  focusColor: const Color(0x33fe724c),
   pageTransitionsTheme: const PageTransitionsTheme(builders: {
     TargetPlatform.android: ZoomPageTransitionsBuilder(),
     TargetPlatform.iOS: ZoomPageTransitionsBuilder(),

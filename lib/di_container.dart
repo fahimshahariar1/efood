@@ -14,6 +14,10 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'data/datasource/remote/dio/dio_client.dart';
 import 'data/datasource/remote/dio/logging_interceptor.dart';
+import 'features/branch/domain/repositories/banner_repo.dart';
+import 'features/branch/domain/repositories/branch_repo.dart';
+import 'features/branch/providers/banner_provider.dart';
+import 'features/branch/providers/branch_providers.dart';
 import 'features/cart/domain/repositories/cart_repo.dart';
 import 'features/cart/provider/cart_provider.dart';
 
@@ -29,6 +33,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => OnBoardingRepo(dioClient: sl()));
   sl.registerLazySingleton(() => ProductRepo(dioClient: sl()));
   sl.registerLazySingleton(() => CartRepo(sharedPreferences: sl()));
+  sl.registerLazySingleton(() => BranchRepo(dioClient: sl()));
+  sl.registerLazySingleton(() => BannerRepo(dioClient: sl()));
 
 
 
@@ -39,7 +45,8 @@ Future<void> init() async {
   sl.registerFactory(() => LanguageProvider(languageRepo: sl()));
   sl.registerFactory(() => OnBoardingProvider(onboardingRepo: sl(), sharedPreferences: sl()));
   sl.registerFactory(() => ProductProvider(productRepo: sl()));
-  sl.registerFactory(() => CartProvider(cartRepo: sl()));
+  sl.registerFactory(() => BranchProvider(branchRepo: sl()));
+  sl.registerFactory(() => BannerProvider(bannerRepo: sl()));
 
 
   // External

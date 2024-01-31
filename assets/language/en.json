@@ -578,6 +578,11 @@
   "chicken_price" : "$56",
   "sauce_price" : "$5",
   "no_addons_available" : "No Addons Available",
-  "no_sizes_available" : "No Sizes Available"
+  "no_sizes_available" : "No Sizes Available",
+  "address_info" : "76A eight evenue, New York, US",
+  "branch_info" : "Dhanmondi Branch",
+  "minimum_price" : "Minimum Start ",
+  "km_away" : "12 km",
+  "review_info" : "1200+ Review"
 
 }

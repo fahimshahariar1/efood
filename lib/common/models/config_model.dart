@@ -116,7 +116,6 @@ class ConfigModel {
         CustomerVerification? customerVerification,
 
 
-
       }) {
     _restaurantName = restaurantName;
     _restaurantLogo = restaurantLogo;

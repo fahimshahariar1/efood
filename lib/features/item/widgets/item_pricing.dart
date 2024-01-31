@@ -32,7 +32,7 @@ class _ItemPricingState extends State<ItemPricing> {
   }
 
   void calculateTotalPrice(){
-    Provider.of<CartProvider>(context, listen: false).calculateTotalPrice();
+    Provider.of<CartProvider>(context, listen: true).calculateTotalPrice();
   }
 
   @override
@@ -92,7 +92,7 @@ class _ItemPricingState extends State<ItemPricing> {
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: InkWell(
-                            onTap: () => cartProvider.setQuantity(isIncrement: true, cart: widget.cart, productIndex: -1, fromProductView: true),
+                            onTap: () => cartProvider.setQuantity(isIncrement: true, cart: widget.cart, productIndex: 1, fromProductView: true),
                             child: Container(
                               height: 28,
                               width: 28,

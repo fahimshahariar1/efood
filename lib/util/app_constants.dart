@@ -6,6 +6,7 @@ class AppConstants {
   static const String appVersion = '10.2';
   static const String baseUrl =  'https://efood-admin.6amtech.com';
   static const String configUri = '/api/v1/config';
+  static const String bannerUri = 'https://efood-admin.6amtech.com/storage/app/public/banner';
   static const String trackUri = '/api/v1/customer/order/track?order_id=';
   static const String messageUri = '/api/v1/customer/message/get';
   static const String sendMessageUri = '/api/v1/customer/message/send';

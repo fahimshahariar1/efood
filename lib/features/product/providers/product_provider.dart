@@ -1,6 +1,5 @@
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/common/enums/product_filter_type_enum.dart';
 import 'package:flutter_restaurant/common/models/api_response_model.dart';
 import 'package:flutter_restaurant/common/models/cart_model.dart';

@@ -1,5 +1,5 @@
 
-class Images {
+class   Images {
   static const String home = 'assets/image/home_icon.png';
   static const String maintenance = 'assets/image/maintenance.png';
   static const String more = 'assets/image/more_icon.png';
@@ -71,6 +71,7 @@ class Images {
   static const String food = 'assets/image/food.png';
   static const String naga = 'assets/image/naga.png';
   static const String nonveg = 'assets/image/non_veg.png';
+  static const String restaurant = 'assets/image/restaurant.png';
 
 
 
