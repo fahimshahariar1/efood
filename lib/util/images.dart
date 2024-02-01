@@ -74,6 +74,8 @@ class   Images {
   static const String restaurant = 'assets/image/restaurant.png';
   static const String locationNew = 'assets/image/location_new.png';
   static const String bannerNew = 'assets/image/banner_1.png';
+  static const String restaurantLogo = 'assets/image/rlogo.png';
+  static const String vector = 'assets/image/Vector.png';
 
 
 

@@ -44,7 +44,12 @@ class _OrderDetailsState extends State<OrderDetails> {
             offset: productProvider.latestProductModel?.offset,
             itemView: productProvider.latestProductModel != null
                 ? productProvider.latestProductModel!.products!.isNotEmpty
-                ? GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                ?
+            GridView.builder(physics: const NeverScrollableScrollPhysics(),
+              gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: 5,
+                  mainAxisSpacing: 6,
+                  crossAxisCount: 2),
               shrinkWrap: true,
               controller: scrollController,
 

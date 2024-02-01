@@ -1,5 +1,6 @@
 
 class Dimensions {
+  static const double fontSizeExtraSmallest = 8.0;
   static const double fontSizeExtraSmall = 10.0;
   static const double fontSizeSmall = 12.0;
   static const double fontSizeDefault = 14.0;
@@ -30,6 +31,7 @@ class Dimensions {
   static const double containerSizeSmallest = 22.0;
   static const double containerSizeSmall = 30.0;
   static const double containerSizeMedium = 70.0;
+  static const double containerSizeMediumLarge = 80.0;
   static const double containerSizeExtraLarge = 200.0;
   static const double containerSizeOverLarge = 350.0;
 

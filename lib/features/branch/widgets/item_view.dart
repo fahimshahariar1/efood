@@ -4,6 +4,7 @@ import 'package:flutter_restaurant/common/models/product_model.dart';
 import 'package:flutter_restaurant/helper/price_converter_helper.dart';
 import 'package:flutter_restaurant/localization/language_constrants.dart';
 import 'package:flutter_restaurant/util/dimensions.dart';
+import 'package:flutter_restaurant/util/images.dart';
 import 'package:flutter_restaurant/util/styles.dart';
 
 class ItemView extends StatefulWidget {
@@ -34,7 +35,7 @@ class _ItemViewState extends State<ItemView> {
   @override
   void initState() {
     super.initState();
-    imageUrl = "${widget.imgBaseUrl}/${widget.imagePath}";
+    imageUrl = "${widget.imgBaseUrl}/${widget.imagePath[0]}";
     imageUrl = imageUrl.replaceAll('[', '').replaceAll(']', '');
 
     if (kDebugMode) {
@@ -47,68 +48,70 @@ class _ItemViewState extends State<ItemView> {
 
     double? discountedPrice = PriceConverterHelper.convertWithDiscount(widget.product?.price!, widget.product?.discount, widget.product?.discountType);
 
-    return SizedBox(
-      height: Dimensions.containerSizeLarge,
-      child: Padding(
-        padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-        child:  Card(
-            child: Column(children: [
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
+      child:  Card(
+          child: Column(children: [
 
-              ClipRRect(borderRadius: BorderRadius.circular(5),
-                  child: Image.network(imageUrl, fit: BoxFit.cover, height: 80, width: double.infinity,)),
-              const SizedBox(height: Dimensions.paddingSizeSmall,),
+            Stack(
+              children: [
+                ClipRRect(borderRadius: BorderRadius.circular(5),
+                    child: Image.network(imageUrl, fit: BoxFit.cover, height: Dimensions.containerSizeMediumLarge, width: double.infinity,)),
 
-              Container(height: 24, width: 76, transform: Matrix4.translationValues(0, -22, 0),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
-                color: Colors.white
-              ),
-              child:  Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                Container(height: Dimensions.paddingSizeDefault, width: Dimensions.paddingSizeDefault,
-                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).primaryColor),
-                        child: const Icon(Icons.add,size: 12, color:Colors.white,)),
-                  const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
-
-                  Text("Add", style: poppinsRegular.copyWith(color: Theme.of(context).primaryColor),)
-                ],
-              )
-              ),
-              Flexible(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      child: Text(widget.name!, maxLines: 1,
-                        style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeDefault, overflow: TextOverflow.ellipsis),),
-                    ),
-                    const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
-
-                    Image.asset("assets/image/Vector.png", height: 10, width: 10,)
-
-                  ],
+                Positioned(
+                  top: 10, right: 15,
+                  child: Icon(Icons.favorite, size: Dimensions.paddingSizeDefault, color: Theme.of(context).cardColor,),
                 ),
-              ),
-
-              Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(getTranslated("rate", context)!),
-                  Icon(Icons.star_rate_rounded, color: Theme.of(context).highlightColor, size: 15,),
-                ],
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("\$${widget.price}", style: rubikMedium.copyWith(decoration: TextDecoration.lineThrough,
-                    decorationColor: Colors.grey, color: Colors.grey,
-                    ),),
-                  Text("\$$discountedPrice", style: rubikRegular,),
-                ],
-              ),],
-
+              ],
             ),
 
-        ),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+
+
+
+            Container(height: Dimensions.paddingSizeLarge, width: 76, transform: Matrix4.translationValues(0, -22, 0),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
+              color: Colors.white),
+
+            child:  Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Container(height: Dimensions.paddingSizeDefault, width: Dimensions.paddingSizeDefault,
+                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault), color: Theme.of(context).primaryColor),
+                      child: const Icon(Icons.add,size: Dimensions.fontSizeSmall, color:Colors.white,)),
+                const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
+
+                Text(getTranslated("Add", context)!, style: poppinsRegular.copyWith(color: Theme.of(context).primaryColor),)
+              ])),
+
+
+
+            Flexible(child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Flexible(
+                    child: Text(widget.name!, maxLines: 1,
+                      style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeDefault, overflow: TextOverflow.ellipsis))),
+                  const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
+
+                  Image.asset(Images.vector, height: Dimensions.paddingSizeSmall, width: Dimensions.paddingSizeSmall)
+                ])),
+
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(getTranslated("rate", context)!),
+                Icon(Icons.star_rate_rounded, color: Theme.of(context).highlightColor, size: Dimensions.paddingSizeDefault),
+              ],
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text("\$${widget.price}", style: rubikMedium.copyWith(decoration: TextDecoration.lineThrough,
+                  decorationColor: Colors.grey, color: Colors.grey)),
+                Text("\$$discountedPrice", style: rubikRegular),
+              ],
+            ),],
+
+          ),
+
       ),
     );
   }

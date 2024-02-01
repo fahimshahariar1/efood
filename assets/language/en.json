@@ -583,6 +583,11 @@
   "branch_info" : "Dhanmondi Branch",
   "minimum_price" : "Minimum Start ",
   "km_away" : "12 km",
-  "review_info" : "1200+ Review"
+  "review_info" : "1200+ Review",
+  "popular" : "Popular",
+  "chefs_choice" : "Chef's Choice",
+  "todays_deal" : "Today's Deal",
+  "burger" : "Burger",
+  "random" : "Random"
 
 }
