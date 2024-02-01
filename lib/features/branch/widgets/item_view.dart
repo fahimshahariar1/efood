@@ -51,40 +51,42 @@ class _ItemViewState extends State<ItemView> {
       height: Dimensions.containerSizeLarge,
       child: Padding(
         padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-        child: Card(
-          child: Column(
-            children: [
-              ClipRRect(borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault),
-                child: Image.network(imageUrl, fit: BoxFit.cover, height: 80, width: double.infinity,
-                ),
-              ),
+        child:  Card(
+            child: Column(children: [
+
+              ClipRRect(borderRadius: BorderRadius.circular(5),
+                  child: Image.network(imageUrl, fit: BoxFit.cover, height: 80, width: double.infinity,)),
               const SizedBox(height: Dimensions.paddingSizeSmall,),
 
               Container(height: 24, width: 76, transform: Matrix4.translationValues(0, -22, 0),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
-                color: Theme.of(context).highlightColor
+                color: Colors.white
               ),
-              child:  Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(height: Dimensions.paddingSizeDefault, width: Dimensions.paddingSizeDefault,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
-                        child: Icon(Icons.remove,size: 12, color: Theme.of(context).highlightColor,)),
-
-                    const Text("1"),
-
-                    Container(height: Dimensions.paddingSizeDefault, width: Dimensions.paddingSizeDefault,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
-                        child: Icon(Icons.add, size: 12, color: Theme.of(context).highlightColor,)),
-                  ],
-              ),
-              ),
-              Row(
+              child:  Row(mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(widget.name!, maxLines: 1,
-                    style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeDefault, ),),
-                  Image(image: image)
+                Container(height: Dimensions.paddingSizeDefault, width: Dimensions.paddingSizeDefault,
+                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).primaryColor),
+                        child: const Icon(Icons.add,size: 12, color:Colors.white,)),
+                  const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
+
+                  Text("Add", style: poppinsRegular.copyWith(color: Theme.of(context).primaryColor),)
                 ],
+              )
+              ),
+              Flexible(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Text(widget.name!, maxLines: 1,
+                        style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeDefault, overflow: TextOverflow.ellipsis),),
+                    ),
+                    const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
+
+                    Image.asset("assets/image/Vector.png", height: 10, width: 10,)
+
+                  ],
+                ),
               ),
 
               Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -99,14 +101,13 @@ class _ItemViewState extends State<ItemView> {
                 children: [
                   Text("\$${widget.price}", style: rubikMedium.copyWith(decoration: TextDecoration.lineThrough,
                     decorationColor: Colors.grey, color: Colors.grey,
-                    ),
-                  ),
+                    ),),
                   Text("\$$discountedPrice", style: rubikRegular,),
                 ],
-              ),
+              ),],
 
-            ],
-          ),
+            ),
+
         ),
       ),
     );

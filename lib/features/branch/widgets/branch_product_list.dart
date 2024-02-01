@@ -17,24 +17,28 @@ class _BranchProductState extends State<BranchProduct> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(width: 360, height: 50,
-          child: TextField(decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Theme.of(context).hintColor)
-          ),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(Dimensions.radiusSmall)),
-              hintText: "Search Item",hintStyle: poppinsRegular.copyWith(color: Theme.of(context).hintColor),
-              prefixIcon: Icon(CupertinoIcons.search, color: Theme.of(context).hintColor,)
-          )),
-        ),
 
-        Row(
-          children: [
-            Text("Popular"),
-            Text("Chef's Choices"),
-            Text("Todays Deal"),
-            Text("Burger"),
-            Text("Random"),
-          ],
+        const SizedBox(height: Dimensions.paddingSizeDefault),
+         SingleChildScrollView( scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Popular", style: poppinsRegular.copyWith(color: Theme.of(context).dialogBackgroundColor, decoration: TextDecoration.underline,
+                decorationColor: Theme.of(context).dialogBackgroundColor),),
+                SizedBox(width: Dimensions.paddingSizeDefault,),
+                Text("Chef's Choices", style: poppinsRegular,),
+                SizedBox(width: Dimensions.paddingSizeDefault,),
+                Text("Today's Deal", style: poppinsRegular,),
+                SizedBox(width: Dimensions.paddingSizeDefault,),
+                Text("Burger", style: poppinsRegular,),
+                SizedBox(width: Dimensions.paddingSizeDefault,),
+                Text("Random", style: poppinsRegular,),
+                SizedBox(width: Dimensions.paddingSizeDefault,),
+              ],
+            ),
+          ),
         ),
 
         const OrderDetails(),

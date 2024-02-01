@@ -47,13 +47,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ? GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               shrinkWrap: true,
               controller: scrollController,
+
               itemBuilder: (BuildContext context, int index) {
                 return ItemView(imagePath: productProvider.latestProductModel?.products?[index].image?.first ?? '',
                   name: "${ productProvider.latestProductModel!.products?[index].name}",
                   price: "${productProvider.latestProductModel!.products![index].price}",
                   discountPrice: '${productProvider.latestProductModel!.products![index].discount}',
                   imgBaseUrl: imageUrl,
-
                   );
               },
               itemCount: productProvider.latestProductModel!.products!.length,

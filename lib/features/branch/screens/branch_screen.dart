@@ -1,10 +1,14 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_restaurant/common/widgets/customizable_spacebar_widget.dart';
 import 'package:flutter_restaurant/features/branch/widgets/branch_carousel_slider.dart';
 import 'package:flutter_restaurant/features/branch/widgets/branch_product_list.dart';
 import 'package:flutter_restaurant/features/branch/widgets/restaurant_info_widget.dart';
+
 import 'package:flutter_restaurant/util/dimensions.dart';
 import 'package:flutter_restaurant/util/images.dart';
+
 
 
 class Branch extends StatefulWidget {
@@ -19,42 +23,48 @@ class _BranchState extends State<Branch> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        slivers: [ SliverAppBar(leading: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white,),
-            floating: true, snap: true,
+        slivers: [
 
-            actions: [ Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: Dimensions.paddingSizeLarge),
-                    child: Container(
-                         height: Dimensions.paddingSizeMedium, width: Dimensions.paddingSizeMedium,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.radiusSmall),color: Colors.white),
-                        child: Icon(Icons.share, color: Theme.of(context).highlightColor,size: Dimensions.paddingSizeDefault,)),
-                  )
-                ],
-              )
-            ],
-            expandedHeight: 120,
-            flexibleSpace: FlexibleSpaceBar(background: Image.asset(Images.restaurant, fit: BoxFit.cover),
+          SliverAppBar(
+            pinned: true,
+            expandedHeight: 250,
+
+            flexibleSpace: Container(margin: EdgeInsets.zero,
+              child: FlexibleSpaceBar(
+                titlePadding: EdgeInsets.zero,
+                background: Image.asset(Images.restaurant, fit: BoxFit.cover,),
+                title: CustomizableSpaceBarWidget(
+                  builder: (context, scrollingRate) {
+                    if (kDebugMode) {
+                      print(scrollingRate);
+                    }
+                    return Container(
+                      height: 100 - (scrollingRate * 200),
+                      color: Colors.red,
+                      child: const Column(
+                        children: [
+
+                            RestaurantInfo()
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           ),
 
-            SliverToBoxAdapter(
-            child: Container( decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault)),
-              child:  const Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: Dimensions.paddingSizeDefault),
 
-                    child: RestaurantInfo(),
-                  ),
-                  SizedBox(height: Dimensions.paddingSizeDefault,),
+            const SliverToBoxAdapter(
+            child:  Column(
+              children: [
 
-                  BranchCarousel(),
-                  
-                  BranchProduct()
-                ],
-              ),
+                SizedBox(height: Dimensions.paddingSizeDefault,),
+
+                BranchCarousel(),
+
+                BranchProduct()
+              ],
             ),
           ),
 
